@@ -3,29 +3,25 @@
 __author__:liubin 
 
 '''
+import json
 import requests
 import unittest
 from lib.log import Logger
 from conf import settings
-import json
-
 
 
 class TestStringMethods(unittest.TestCase):
-
-
     def setUp(self):
-        self.logger = Logger().run_logger
+        self.logger = Logger()
 
         self.base_url = settings.HOST
 
     @unittest.skip('跳过')
     def test1(self):
-
-        self.assertEqual(3,5,msg='不相等')
+        self.assertEqual(3, 5, msg='不相等')
 
     def test2(self):
-        self.logger.info("nihao")
+        self.logger.log("nihao")
         self.assertEqual('hello', 'nihao')
 
     # 解码函数（装载）：将字符流转化为json对象
@@ -36,22 +32,46 @@ class TestStringMethods(unittest.TestCase):
     # dump：输出到文件流
 
     def test3(self):
+        post_data = {
+            "activityId": 0,
+            "cusId": "686000660",
+            "exchangeCode": "",
+            "openId": "",
+            "orderContext": {
+                "proList": [
+                    {
+                        "code": "8",
+                        "id": 8,
+                        "name": "桃仁阿胶糕8",
+                        "num": "2",
+                        "price": 1,
+                        "proImage": "string",
+                        "skuName": "桃仁阿胶糕8",
+                        "specialPrice": 0,
+                        "templateId": "8",
+                        "wareHouseCode": "555"
+                    },
+                    {
+                        "code": "7",
+                        "name": "百年老树鲜核桃7",
+                        "num": "3",
+                        "price": 2,
+                        "proImage": "string",
+                        "skuName": "2斤装",
+                        "specialPrice": 0,
+                        "templateId": "7",
+                        "wareHouseCode": "888"
+                    }
+                ]
+            },
+            "phone": "string"
+        }
 
-
-        post_data = dict(
-            user="liubin",
-            password="12345",
-            pay_account="arv"
-        )
-
-        res = requests.post(url='sjd',data=post_data)
+        res = requests.post(url='sjd', data=post_data)
 
         res_dict = json.loads(res.text)
 
-
-
-
-    def  tearDown(self):
+    def tearDown(self):
         pass
 
 #
@@ -74,26 +94,3 @@ class TestStringMethods(unittest.TestCase):
 #     #运行测试套件，并返回测试结果
 #
 #     test_result = unittest.TextTestRunner(verbosity=2).run(suite())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

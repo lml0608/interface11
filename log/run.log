@@ -10,3 +10,5 @@
 2018-06-20 17:31:49,586 - test_mode1.py[line:28] - INFO : nihao
 2018-06-20 17:32:49,840 - test_mode1.py[line:28] - INFO : nihao
 2018-06-20 17:33:33,311 - test_mode1.py[line:28] - INFO : nihao
+2018-06-21 08:36:55,436 - log.py[line:69] - INFO : nihao
+2018-06-25 09:16:01,353 - log.py[line:69] - INFO : nihao
